@@ -1,6 +1,5 @@
 # Секреты
 config/secrets.env
-config/config.yaml  # Если в нем есть чувствительные данные
 
 # Node.js
 node_modules/
