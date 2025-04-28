@@ -11,4 +11,4 @@ def find_project_root(current_path: Path = Path(__file__)) -> Path:
         current_path = parent
     return current_path
 
-PROJECT_ROOT = Path("C:/Python/Projects/meteora_bot") 
+PROJECT_ROOT = Path(__file__).parent.parent.parent
