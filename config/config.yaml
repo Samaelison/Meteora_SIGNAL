@@ -1,0 +1,8 @@
+# E:\MeteoraMeme\meteora_bot\config\config.yaml
+
+global:
+  environment: "dev"
+  log_level: "DEBUG"
+
+meteora:
+  base_url: "https://dlmm-api.meteora.ag"   # Базовый URL для запросов
