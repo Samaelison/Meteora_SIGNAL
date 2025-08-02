@@ -37,17 +37,17 @@ def main(db, notifier):
     log.info(f"Successfully fetched {len(groups)} filtered pairs from API.")
 
     # Изменено здесь: фильтруем ТОЛЬКО новые пары
-    new_groups = filter_new_pairs(groups, threshold=1.01)  # ← Заменили функцию
+    new_groups = filter_new_pairs(groups, threshold=1.01)  
     log.info(f"After selecting NEW pairs => we have {len(new_groups)} groups to analyze.")
 
     # Дальнейшие шаги работают уже с новыми парами
-    liquidity_filtered_groups = filter_large_liquidity_pairs(new_groups, max_liquidity=1_000_000.0)  # ← Переменная new_groups
+    liquidity_filtered_groups = filter_large_liquidity_pairs(new_groups, max_liquidity=1_000_000.0)  
     log.info(f"After exclude 'high-liquidity' pairs => we have {len(liquidity_filtered_groups)} groups to analyze further.")
 
     final_groups = filter_and_sort_by_volume(liquidity_filtered_groups)
     log.info(f"After volume filtering and sorting, {len(final_groups)} groups remain for final analysis.")
 
-    # Логирование результатов (осталось без изменений)
+    # Логирование результатов 
     for i, group in enumerate(final_groups):
         group_name = group.get("name", "N/A")
         pairs_count = len(group.get("pairs", []))
@@ -120,9 +120,9 @@ def main(db, notifier):
                 current_ratio = float(pool.get("ratio", 0.0))
                 current_price = float(pool.get("current_price", 0.0))
             except (TypeError, ValueError):
-                continue  # Пропускаем пул при ошибке конвертации
+                continue 
 
-            # Логика перехода между этапами (исправлены отступы!)
+            # Логика перехода между этапами
             new_stage = current_stage
             new_price_history = price_history.copy()
 
@@ -139,7 +139,7 @@ def main(db, notifier):
             else:
                 new_stage = 0
 
-            new_price_history = new_price_history[-3:]  # Обрезаем историю
+            new_price_history = new_price_history[-3:] 
 
             # Обновляем состояние в БД
             db.update_coin_state(
