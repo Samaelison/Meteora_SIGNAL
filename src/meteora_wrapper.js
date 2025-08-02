@@ -1,4 +1,4 @@
-// E:\MeteoraMeme\meteora_bot\src\utils\meteora_wrapper.js
+
 
 require("dotenv").config({ path: "E:/MeteoraMeme/meteora_bot/config/secrets.env" });
 
@@ -48,13 +48,10 @@ console.log("Server Keypair Pubkey:", keypair.publicKey.toBase58());
 
 const DEBUG_LOGS = (process.env.DEBUG_LOGS === "true");
 
-/**
- * Обёртка для sendAndConfirmTransaction
- * (нет повторных попыток внутри одного вызова)
- */
+
 async function sendAndConfirmOnce(connection, transaction, signers, options) {
   try {
-    // Единственная попытка — если неудачно, выбрасывает ошибку
+  
     return await sendAndConfirmTransaction(connection, transaction, signers, options);
   } catch (err) {
     console.warn(`[sendAndConfirmOnce] => ${err.message}`);
@@ -62,9 +59,7 @@ async function sendAndConfirmOnce(connection, transaction, signers, options) {
   }
 }
 
-/**
- * Загружаем decimals для X/Y
- */
+
 async function loadDecimals(dlmmPool) {
   const wsolMintStr = "So11111111111111111111111111111111111111112";
 
@@ -99,11 +94,7 @@ async function loadDecimals(dlmmPool) {
   }
 }
 
-/**
- * POST /list_bins_around
- * Вызываем getActiveBin, затем getBinsAroundActiveBin(70,70)
- * => выводим в консоль только 3 бина (left, active, right) для отладки
- */
+
 app.post("/list_bins_around", async (req, res) => {
   try {
     const { poolAddress } = req.body;
@@ -188,10 +179,7 @@ app.post("/list_bins_around", async (req, res) => {
   }
 });
 
-/**
- * POST /swap_with_price_impact
- * (Логика свапа без изменений)
- */
+
 app.post("/swap_with_price_impact", async (req, res) => {
   try {
     const { lbPair, amountIn, swapYtoX, priceImpactBps } = req.body;
@@ -369,12 +357,7 @@ app.post("/swap_with_price_impact", async (req, res) => {
   }
 });
 
-/*
-  ============================================================================
-  NEW CODE BELOW:
-  Endpoints to Add Liquidity, Get Position Info, Remove Liquidity
-  ============================================================================
-*/
+
 
 /**
  * POST /add_liquidity_spot
@@ -700,12 +683,6 @@ const server = app.listen(PORT, () => {
   console.log(`Meteora wrapper server listening on port ${PORT}`);
 });
 
-/*
-  ============================================================================
-  NEW CODE: add "/get_active_bin" endpoint
-  ============================================================================
-*/
-
 /**
  * POST /get_active_bin
  * Возвращает текущий binId и price (короткий аналог list_bins_around, без массива бинов)
@@ -743,12 +720,6 @@ app.post("/get_active_bin", async (req, res) => {
   }
 });
 
-/*
-  ============================================================================
-  NEW CODE: add "/get_pool_mints" endpoint
-  ============================================================================
-*/
-
 /**
  * POST /get_pool_mints
  * Возвращает mintX, mintY, decimalsX, decimalsY для данного lbPair
@@ -783,11 +754,6 @@ app.post("/get_pool_mints", async (req, res) => {
   }
 });
 
-/*
-  ============================================================================
-  NEW CODE: add "/list_positions_by_user_and_lbpair" endpoint
-  ============================================================================
-*/
 
 /**
  * POST /list_positions_by_user_and_lbpair
