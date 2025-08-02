@@ -1,4 +1,4 @@
-# E:\MeteoraMeme\meteora_bot\src\utils\logger.py
+
 
 import logging
 import sys
