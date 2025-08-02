@@ -1,4 +1,4 @@
-# E:\MeteoraMeme\meteora_bot\src\modules\meteora_api.py
+
 
 import requests
 from src.utils.logger import get_logger
