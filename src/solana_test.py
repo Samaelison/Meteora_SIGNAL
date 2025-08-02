@@ -1,4 +1,4 @@
-# E:\MeteoraMeme\meteora_bot\src\utils\solana_test.py
+
 
 import os
 import time
