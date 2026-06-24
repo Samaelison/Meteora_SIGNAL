@@ -1,4 +1,17 @@
-**Project Title**\
+# ⚠️ Disclaimer
+
+This project was developed with the help of both a human (me) and AI (ChatGPT).
+
+The main purpose of this project was learning and experimentation. I tested it with real funds, and the results were mixed — sometimes profitable, sometimes not. However, I have not tested it continuously for more than 5 days, so its long-term performance and stability are unknown.
+
+Please refrain from posting comments about "vibe coding." The goal of this repository is to share ideas, learn, and improve.
+
+I hope this project will be useful or interesting to people who are building trading bots. If you have any suggestions, recommendations, or constructive feedback about the code, I would greatly appreciate hearing from you.
+
+**Thank you!**
+
+
+# **Project Title**
 Meteora Meme Trading Bot Suite
 
 **Overview**\
